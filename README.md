@@ -9,12 +9,13 @@
 
 ## Features:
 
+- [Challenge creation](howtos/challenge_creation.md)
 - Account creation
 - Login
 - Todo list creation
 - Add tasks
 - Invite friend to task
-- Challenge statictics
+- Challenge statistic
 - Bonus points:
     * Set privacy to task ( public/private (only invitted can join))
     * Ajax
