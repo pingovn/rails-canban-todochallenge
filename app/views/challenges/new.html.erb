@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sx-12 col-md-3"></div>
+  <div class="col-sx-12 col-md-6">
+    <div class="challenge-form">
+      <%= simple_form_for(@challenge, :html => {:role => 'form'}) do |f| %>
+          <h3>Create a Challenge</h3>
+          <% if @challenge.errors.any? %>
+              <div id="error_explanation">
+                <ul>
+                  <% @challenge.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+          <%= f.input :name, :input_html => {:class => 'form-control'} %>
+          <%= f.input :starts_on %>
+          <%= f.input :description, :as => :text, :input_html => {:class => 'form-control'} %>
+          <br/>
+          <%= f.submit 'Create A Challenge', :class => 'button right' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sx-12 col-md-3"></div>
+</div>
