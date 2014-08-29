@@ -12,4 +12,8 @@ Then I should be redirected to task form to add task
     + Type should be in *DailyTask*, *WeeklyTask*, and *MonthlyTask*
     + Point is a integer
     + Point should not greater than 50
+- Create `DailyTask`, `WeeklyTask`, `MonthlyTask` models are inherited model of `Task`
+- Task controller:
+    + A children of challenge [nested resource](http://edgeguides.rubyonrails.org/routing.html#nested-resources)
+    
 

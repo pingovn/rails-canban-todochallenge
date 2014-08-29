@@ -1,0 +1,3 @@
+class DailyTask < Task
+
+end
