@@ -8,11 +8,15 @@ class TasksController < ApplicationController
 
   def create
     @task = challenge.tasks.new(task_params)
-    if @task.save
-      redirect_to challenge_tasks_url
-    else
-      @tasks = challenge.tasks
-      render :index
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to challenge_tasks_url }
+        format.js
+      else
+        @tasks = challenge.tasks
+        format.html { render :index }
+        format.js
+      end
     end
   end
 
@@ -25,10 +29,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if @task.destroy
-      redirect_to challenge_tasks_path, notice: 'You have successfully remove a task'
-    else
-      redirect_to challenge_tasks_path, alert: 'Removing task was failure.'
+    respond_to do |format|
+      if @task.destroy
+        format.html { redirect_to challenge_tasks_path, notice: 'You have successfully remove a task' }
+        format.js
+      else
+        format.html { redirect_to challenge_tasks_path, alert: 'Removing task was failure.' }
+        format.js { render :js => "alert('remove_fail')"}
+      end
     end
   end
 
@@ -43,7 +51,7 @@ class TasksController < ApplicationController
   end
 
   def load_task
-   @task =  challenge.tasks.find(params[:id])
+    @task = challenge.tasks.find(params[:id])
   end
 
 end

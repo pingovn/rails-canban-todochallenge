@@ -1,16 +1,4 @@
 <% tasks.each do |task| %>
     <% next if task.new_record?%>
-    <div class="row">
-      <div class="col-xs-5"><%= task.name %></div>
-      <div class="col-xs-3"><%= task.type %></div>
-      <div class="col-xs-2"><%= task.point %></div>
-      <div class="col-xs-2">
-        <%= link_to edit_challenge_task_path(@challenge, task) do %>
-            <span class="glyphicon glyphicon-edit">&nbsp;</span>
-        <% end %>
-        <%= link_to challenge_task_path(@challenge, task), method: :delete do %>
-            <span class="glyphicon glyphicon-trash">&nbsp;</span>
-        <% end %>
-      </div>
-    </div>
+    <%=render :partial => 'task', :object => task%>
 <% end %>

@@ -21,4 +21,6 @@ Then I should be redirected to task form to add task
 
 - Set add option `remote: true` to form
 - Create `_task` partial
+- Add `create.js.erb` to render *js* format
+- Add `destroy.js.erb` for destroying by ajax
  
