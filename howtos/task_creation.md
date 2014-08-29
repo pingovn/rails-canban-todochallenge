@@ -15,5 +15,5 @@ Then I should be redirected to task form to add task
 - Create `DailyTask`, `WeeklyTask`, `MonthlyTask` models are inherited model of `Task`
 - Task controller:
     + A children of challenge [nested resource](http://edgeguides.rubyonrails.org/routing.html#nested-resources)
-    
+    + Add actions: `create`, `update`, `edit`, `destroy` and `index`    
 
