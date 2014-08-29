@@ -12,8 +12,7 @@
 - [Challenge creation](howtos/challenge_creation.md)
 - Account creation
 - Login
-- Todo list creation
-- Add tasks
+- [Task creation](howtos/task_creation.md)
 - Invite friend to task
 - Challenge statistic
 - Bonus points:
