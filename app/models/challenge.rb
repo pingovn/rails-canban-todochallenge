@@ -1,5 +1,7 @@
 class Challenge < ActiveRecord::Base
-  belongs_to :creator, :foreign_key => :creator_id, :class_name => 'User'
+  belongs_to :creator, :class_name => 'User'
+  has_many :tasks, :dependent => :destroy
+
   validates :name, :starts_on, :presence => true
   validates :name, :length => {:minimum => 10, :maximum => 50}
   validates :description, :length => {:maximum => 500}
