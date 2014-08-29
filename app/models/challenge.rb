@@ -9,7 +9,7 @@ class Challenge < ActiveRecord::Base
   protected
   def starts_on_is_in_future
     if starts_on && starts_on <= Date.today
-      errors.add(:starts_on, "should be in the future")
+      errors.add(:starts_on, 'should be in the future')
     end
   end
 end
