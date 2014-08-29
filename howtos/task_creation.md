@@ -7,4 +7,9 @@ Then I should be redirected to task form to add task
 - Define association
     + belongs_to :challenge
     + challenge has many tasks
+- Task validation:
+    + Name, Type and Point should be presence
+    + Type should be in *DailyTask*, *WeeklyTask*, and *MonthlyTask*
+    + Point is a integer
+    + Point should not greater than 50
 
