@@ -6,7 +6,7 @@ class ChallengePolicy < ApplicationPolicy
   end
 
   def update?
-    @record.user_id == @user.id
+    @record.creator_id == @user.id
   end
 
   #  All user can view a challenge
