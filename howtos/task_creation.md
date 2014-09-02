@@ -29,6 +29,8 @@ Then I should be redirected to task form to add task
 - add ` include Pundit` to `ApplicationController`
 - run `rails g pundit:policy challenge` to generate challenge policies
 - set challenge policies
+- run `rails g pundit:policy task` to generate task policies
+- go to `TaskPolicy` class to configure task polices 
 
 
  

@@ -3,12 +3,13 @@ class TasksController < ApplicationController
   before_action :load_task, :only => [:update, :destroy]
 
   def index
-    @tasks = challenge.tasks
-    @task = Task.new
+    @tasks = policy_scope(challenge.tasks)
+    @task = challenge.tasks.new
   end
 
   def create
     @task = challenge.tasks.new(task_params)
+    authorize(@task)
     respond_to do |format|
       if @task.save
         format.html { redirect_to challenge_tasks_url }
@@ -22,7 +23,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @tasks.update(task_params)
+    if @task.update(task_params)
       redirect_to challenge_tasks_url
     else
       render :index
@@ -53,6 +54,7 @@ class TasksController < ApplicationController
 
   def load_task
     @task = challenge.tasks.find(params[:id])
+    authorize(@task)
   end
 
 end

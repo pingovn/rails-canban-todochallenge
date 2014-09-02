@@ -1,14 +1,17 @@
 <div class="task-wrapper">
+
   <div class="row">
     <div class="col-xs-12 col-md-3"></div>
     <div class="col-xs-12 col-md-6">
-      <%= simple_form_for(:task, url: challenge_tasks_path(@challenge, @task), remote: true, html: {role: 'form', class: 'form-inline'}) do |f| %>
-          <%= f.input :name, label: false, placeholder: "Task Name" %>
-          <%= f.input :type, label: false, as: :select, collection: Task.type_collection, prompt: 'Select a task type' %>
-          <%= f.input :point, label: false, placeholder: 'Point', input_html: {style: "width: 60px;"} %>
-          <%= f.button :submit, 'Add' %>
+      <% if policy(@task).new? %>
+          <%= simple_form_for(:task, url: challenge_tasks_path(@challenge, @task), remote: true, html: {role: 'form', class: 'form-inline'}) do |f| %>
+              <%= f.input :name, label: false, placeholder: "Task Name" %>
+              <%= f.input :type, label: false, as: :select, collection: Task.type_collection, prompt: 'Select a task type' %>
+              <%= f.input :point, label: false, placeholder: 'Point', input_html: {style: "width: 60px;"} %>
+              <%= f.button :submit, 'Add' %>
+          <% end %>
+          <br/>
       <% end %>
-      <br/>
 
       <h3>Task</h3>
 
