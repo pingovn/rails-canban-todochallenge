@@ -3,14 +3,17 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find params[:id]
+    authorize(@challenge)
   end
 
   def new
     @challenge = Challenge.new
+    authorize @challenge
   end
 
   def create
     @challenge = Challenge.new(challenge_params)
+    authorize @challenge
     if @challenge.save
       redirect_to @challenge
     else

@@ -27,5 +27,8 @@ Then I should be redirected to task form to add task
 ## Only host of challenge can add Task
 - run `rails g pundit:install` to generate application policy. 
 - add ` include Pundit` to `ApplicationController`
+- run `rails g pundit:policy challenge` to generate challenge policies
+- set challenge policies
+
 
  
