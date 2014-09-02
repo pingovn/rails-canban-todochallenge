@@ -1,10 +1,14 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_task, :only => [:update, :destroy]
+  before_action :load_task, :only => [:update, :destroy, :edit]
 
   def index
-    @tasks = policy_scope(challenge.tasks)
+    # @tasks = policy_scope(challenge.tasks)
     @task = challenge.tasks.new
+    render_index
+  end
+
+  def edit
   end
 
   def create
@@ -15,18 +19,21 @@ class TasksController < ApplicationController
         format.html { redirect_to challenge_tasks_url }
         format.js
       else
-        @tasks = challenge.tasks
-        format.html { render :index }
+        format.html { render_index }
         format.js
       end
     end
   end
 
   def update
-    if @task.update(task_params)
-      redirect_to challenge_tasks_url
-    else
-      render :index
+    respond_to do |format|
+      if @task.update(task_params)
+        format.html { redirect_to challenge_tasks_url }
+        format.js
+      else
+        format.html { render_index }
+        format.js
+      end
     end
   end
 
@@ -37,7 +44,7 @@ class TasksController < ApplicationController
         format.js
       else
         format.html { redirect_to challenge_tasks_path, alert: 'Removing task was failure.' }
-        format.js { render :js => "alert('remove_fail')"}
+        format.js { render :js => "alert('remove_fail')" }
       end
     end
   end
@@ -54,7 +61,13 @@ class TasksController < ApplicationController
 
   def load_task
     @task = challenge.tasks.find(params[:id])
+    @task = @task.becomes(Task)
     authorize(@task)
+  end
+
+  def render_index
+    @tasks = policy_scope(challenge.tasks)
+    render :index
   end
 
 end

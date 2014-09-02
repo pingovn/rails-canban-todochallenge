@@ -1,0 +1,6 @@
+<%= simple_form_for([challenge, task], remote: true, html: {role: 'form', class: 'form-inline'}) do |f| %>
+    <%= f.input :name, label: false, placeholder: "Task Name" %>
+    <%= f.input :type, label: false, as: :select, collection: Task.type_collection, prompt: 'Select a task type' %>
+    <%= f.input :point, label: false, placeholder: 'Point', input_html: {style: "width: 60px;"} %>
+    <%= f.button :submit, task.new_record? ? 'Add' : 'Update' %>
+<% end %>

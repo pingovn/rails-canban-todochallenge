@@ -14,6 +14,10 @@ class TaskPolicy < ApplicationPolicy
     challenge.starts_on > Date.today
   end
 
+  def edit?
+    update?
+  end
+
   def destroy?
     update?
   end

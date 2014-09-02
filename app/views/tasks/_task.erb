@@ -1,9 +1,9 @@
-<div class="row" id="<%=dom_id(task)%>">
+<div class="row" id="task_<%= task.id %>">
   <div class="col-xs-5"><%= task.name %></div>
   <div class="col-xs-3"><%= task.type %></div>
   <div class="col-xs-2"><%= task.point %></div>
   <div class="col-xs-2">
-    <%= link_to edit_challenge_task_path(@challenge, task) do %>
+    <%= link_to edit_challenge_task_path(@challenge, task), remote: true do %>
         <span class="glyphicon glyphicon-edit">&nbsp;</span>
     <% end %>
     <%= link_to challenge_task_path(@challenge, task), method: :delete, remote: true do %>
