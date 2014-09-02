@@ -23,4 +23,9 @@ Then I should be redirected to task form to add task
 - Create `_task` partial
 - Add `create.js.erb` to render *js* format
 - Add `destroy.js.erb` for destroying by ajax
+
+## Only host of challenge can add Task
+- run `rails g pundit:install` to generate application policy. 
+- add ` include Pundit` to `ApplicationController`
+
  
